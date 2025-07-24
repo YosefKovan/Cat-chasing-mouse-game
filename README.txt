@@ -1,5 +1,9 @@
 # Cat and Mouse Game
 
+
+![System diagram](./images/cat-mouse-image.png)
+
+
 A classic cat-and-mouse chase game built with C++ and SFML. Guide the mouse through multiple levels, collect cheese, avoid cats, and use special items to survive and win!
 
 ---
