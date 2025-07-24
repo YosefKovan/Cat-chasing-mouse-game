@@ -18,7 +18,6 @@ A classic cat-and-mouse chase game built with C++ and SFML. Guide the mouse thro
 ---
 
 ## Screenshots
-<!-- Add screenshots of gameplay here -->
 
 ---
 
