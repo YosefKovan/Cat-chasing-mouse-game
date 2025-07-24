@@ -1,26 +1,96 @@
-Names:
-1) Yosef-Kovan_ID: 328607304
-2) Shmuel-Friedman_ID: 312252588
+# Cat and Mouse Game
 
-====================  about the project  =====================
-The project is a cat mouse chase game. the goal of the game is for the mouse the finish all levels successfully.
+A classic cat-and-mouse chase game built with C++ and SFML. Guide the mouse through multiple levels, collect cheese, avoid cats, and use special items to survive and win!
 
-==================== Classes and objects ====================
-the main class that runs the whole game in the Controller class. this class is in charge of the game loops, 
-dealing with the menu. 
-the Resource class is a singletone class that holds images sounds and music for the game duration.
-Board object which is in charge of presenting the board and 
-holding the main game logic, and dealing with the keys movement .
-FileReader class that is in charge of reading the information from the file and holding this
-information if neede throughout the level.
-Menu class this is in charge of presenting the menu and all menu logic such as dealing with which 
-buttons are clicked and opening the help screen if the button was clicked.
-GameObject - this is the top of the tree for all the game moving and static objects. 
-the tree will split into two branches: Static and MovingObjects each one will split its branches to the 
-objects it  inheritance to.
-the objects that inheirant from the static objects are: Wall, Key, Door, FreezeGift, TimeGift, CatGift, LifeGift. 
-we used the hiding method for the static objects.
-the objects that inheirant from the MovingObjects are Mouse and Cat.
-We used a consts.h file that is incharge of holding the consts and the enums of the program.
-====================  ====================
-the cat chasing mouse algorithm recives the location of the mouse and chases the mouse according to its current location.
+---
+
+## Features
+- Multiple levels with increasing difficulty
+- Animated graphics and sound effects (SFML-based)
+- Power-ups: extra lives, freeze cats, add time, etc.
+- Menu system with help screen
+- Customizable level files
+
+---
+
+## Screenshots
+<!-- Add screenshots of gameplay here -->
+
+---
+
+## Installation & Running
+
+### Prerequisites
+- C++17 or later
+- [SFML 2.6.x](https://www.sfml-dev.org/) (graphics, audio, window)
+- CMake 3.26+
+
+### Build Instructions
+1. **Install SFML** and ensure its path is set in `CMakeLists.txt` (default: `C:/SFML/SFML-2.6.0`).
+2. Clone this repository and open a terminal in the project root.
+3. Run:
+   ```sh
+   cmake -S . -B build
+   cmake --build build
+   ```
+4. Copy all files from `resources/` (images, sounds, music, fonts, txt) to the build output directory if not done automatically.
+5. Run the executable from the build directory.
+
+---
+
+## Project Structure
+- `src/` — Main source files
+  - `main.cpp`: Entry point
+  - `Controller.cpp/h`: Game loop, menu, and level management
+  - `Board.cpp/h`: Handles the game board and main logic
+  - `Menu.cpp/h`: Menu and help screen
+  - `FileReader.cpp/h`: Loads level files
+  - `Resources.cpp/h`: Singleton for images, sounds, fonts
+  - `GameObject.cpp/h`, `Static.cpp/h`, `MovingObject.cpp/h`: Base classes for all objects
+  - `Mouse.cpp/h`, `Cat.cpp/h`, etc.: Game entities
+- `resources/`
+  - `images/`, `sounds/`, `music/`, `font/`, `txt/`: All required assets
+- `include/` — Header files
+- `CMakeLists.txt` — Build configuration
+
+---
+
+## Level Design
+Levels are defined in text files in `resources/txt/`. The main file `Levels.txt` lists the order of level files. Each level file uses characters to represent objects:
+
+**Sample Level File:**
+```
+10 10 0
+#        #
+#        #  
+##D###  ^#     
+#  * #   #  
+#    #   #
+######   #    
+# F  %  ^# 
+#L       # 
+# $* * I #
+##########
+```
+- First line: `<rows> <cols> <time_limit>`
+- Symbols:
+  - `#` Wall
+  - `%` Mouse (player)
+  - `^` Cat (enemy)
+  - `*` Cheese
+  - `D` Door
+  - `F` Key
+  - `$` Cat Gift
+  - `T` Time Gift
+  - `I` Freeze Gift
+  - `L` Life Gift
+
+Add new levels by creating new files and listing them in `Levels.txt`.
+
+## Credits
+
+ Yosef Kovan
+
+## Acknowledgments
+- [SFML](https://www.sfml-dev.org/) for multimedia support
+- All open-source asset authors 
